@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MS\MsController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/clientes', [MsController::class,'clientes']);
+Route::get('/index-cliente', [ClienteController::class,'index'])->name('index.cliente');

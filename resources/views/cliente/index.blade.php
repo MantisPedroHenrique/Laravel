@@ -379,10 +379,10 @@
             </tr>
             <tr>
               <td>7</td>
-              <td>Maykon Silveira</td>
+              <td>Pedro Henrique</td>
               <td>7777</td>
               <td>(41)7777-7777</td>
-              <td>cursos@maykonsilveria.com.br</td>
+              <td>pedro.sousa104@etec.sp.gov.br</td>
               <td><a href="" class="btn btn-primary">Editar</a></td>
               <td><a href="" class="btn btn-danger">Excluir</a></td>
             </tr>
