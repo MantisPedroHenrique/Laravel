@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('fone');
             $table->date('nascimento'); //date 1998-07-24
-            $table->datetime('data'); //datetime 1998-07-24 18:03:15
             $table->timestamps();
         });
     }
