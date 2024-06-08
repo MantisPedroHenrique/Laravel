@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
     public function index(){
-
-        return view('cliente/index');
+        $cliente = Cliente::orderByDesc('created_at')->get();
+        return view('cliente/index', ['cliente'=> $cliente]);
 
     }
 
@@ -19,6 +19,7 @@ class ClienteController extends Controller
     }
 
     public function mostrarCliente(){
+
         return view('Cliente/mostrar');
     }
 
@@ -32,4 +33,14 @@ class ClienteController extends Controller
         redirect()->route('mostrar.cliente')->with('Sucesso', 'Cliente cadastrado com sucesso');
 
     }
+
+    // vizualizar os dados a partir do id o cliente
+    public function editarCliente(cliente $cliente){
+        return view('editar/cliente', ['cliente' => $cliente]);
+    }
+
+    //public function updateCliente(){
+       //dd('atualizar');
+    //}
+
 }
