@@ -30,7 +30,7 @@ class ClienteController extends Controller
         //salvar no banco de dados
         Cliente::create($request->all());
 
-        redirect()->route('mostrar.cliente')->with('Sucesso', 'Cliente cadastrado com sucesso');
+        return redirect()->route('mostrar.cliente')->with('Sucesso', 'Cliente cadastrado com sucesso');
 
     }
 
@@ -39,8 +39,20 @@ class ClienteController extends Controller
         return view('editar/cliente', ['cliente' => $cliente]);
     }
 
-    //public function updateCliente(){
-       //dd('atualizar');
-    //}
+    public function updateCliente(ClienteRequest $request, cliente $cliente){
+        $request->validated();
+
+        //edita as informações no banco de dados
+        $cliente->update([
+            'name' => $request->name,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'fone' => $request->fone,
+            'nascimento' => $request->nascimento,
+
+         ]);
+
+        return redirect()->route('index.cliente')->with('Sucesso', 'Cliente atualizado com sucesso');
+    }
 
 }
