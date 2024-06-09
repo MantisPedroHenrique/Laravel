@@ -26,3 +26,6 @@ Route::get('/', function () {
 
 
  Route::put('/update/cliente/{cliente}', [ClienteController::class,'updateCliente'])->name('update.cliente');
+
+
+ Route::delete('/delete/cliente/{cliente}', [ClienteController::class,'deleteCliente'])->name('delete.cliente');

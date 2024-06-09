@@ -333,7 +333,10 @@
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Importar</button>
+
             <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+
+            <a class="btn btn-primary" href="{{ route('cadastrar.cliente') }}">Novo</a>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
             <svg class="bi"><use xlink:href="#calendar3"/></svg>
@@ -342,12 +345,32 @@
         </div>
       </div>
 
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <form action="{{ route('index.cliente') }}">
+
+                <div class="row">
+                    {{-- COLUNA INPUT --}}
+                    <div class="col-md-11  col-sm-12">
+                        <input type="text" name="pesquisa" style="width: 95%" placeholder="pesquisar por nome cpf ou email">
+                    </div>
+                    {{-- Coluna button --}}
+                    <div class="col-md-1 col-sm-12">
+                        <button type="submit" class="form-control">Buscar</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+      </div>
+
+        <br>
+
       @if (session('sucesso'))
         <div class="alert alert-sucess">
             {{ session('sucesso') }}
         </div>
       @endif
-
 
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
@@ -374,7 +397,14 @@
               <td>{{ $clienteSite->fone }}</td>
               <td>{{ $clienteSite->email }}</td>
               <td><a href="{{ route('editar.cliente', ['cliente' => $clienteSite->id]) }}" class="btn btn-primary">Editar</a></td>
-              <td><a href="" class="btn btn-danger">Excluir</a></td>
+              <td>
+                <form action="{{ route('delete.cliente', ['cliente' => $clienteSite->id]) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                   <button class="btn btn-danger">Excluir</button>
+                </form>
+
+              </td>
             @empty
             <tr> <td>Nada Foi cadastrado</td> </tr>
             @endforelse
